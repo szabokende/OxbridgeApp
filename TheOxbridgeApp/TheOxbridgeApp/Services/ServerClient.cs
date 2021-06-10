@@ -258,5 +258,20 @@ namespace TheOxbridgeApp.Services
                 return response.StatusCode.ToString();
             }
         }
+        /// <summary>
+        /// Get message from the backend
+        /// </summary>
+        /// <returns>A list of Messages</returns>
+        public List<Broadcast> GetMessages()
+        {
+            WebRequest request = WebRequest.Create(Target.Broadcasts);
+            request.Method = "GET";
+
+            String responseFromServer = GetResponse(request);
+
+            List<Broadcast> broadcasts = JsonConvert.DeserializeObject<List<Broadcast>>(responseFromServer);
+            return broadcasts;
+
+        }
     }
 }
