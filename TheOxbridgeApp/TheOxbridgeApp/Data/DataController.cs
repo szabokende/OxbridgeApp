@@ -12,7 +12,7 @@ namespace TheOxbridgeApp.Data
         /// Save a user locally and encrypted
         /// </summary>
         /// <param name="user">The user that will be saved</param>
-        public async void SaveUser(user user)
+        public async void SaveUser(User user)
         {
             await SecureStorage.SetAsync("User", JsonConvert.SerializeObject(user));
         }
@@ -31,13 +31,13 @@ namespace TheOxbridgeApp.Data
         /// Get the locally stored user if it exist
         /// </summary>
         /// <returns>A Task with a User</returns>
-        public async Task<user> GetUser()
+        public async Task<User> GetUser()
         {
             String userJson = await SecureStorage.GetAsync("User");
 
             if (userJson != null)
             {
-                return JsonConvert.DeserializeObject<user>(userJson);
+                return JsonConvert.DeserializeObject<User>(userJson);
             }
             else
             {

@@ -105,10 +105,10 @@ namespace TheOxbridgeApp.ViewModels
             MenuItems.Clear();
             PopupNavigation.PushAsync(new LoadingPopupView());
 
-            user savedUser = await dataController.GetUser();
+            User savedUser = await dataController.GetUser();
             if (savedUser != null)
             {
-                user user = serverClient.Login(savedUser.EmailUsername, savedUser.Password);
+                User user = serverClient.Login(savedUser.EmailUsername, savedUser.Password);
                 if (user != null)
                 {
                     MenuItems.Add(new MasterMenuItems()
