@@ -28,7 +28,7 @@ namespace TheOxbridgeApp.Services
         /// <param name="username">The username of the user</param>
         /// <param name="password">The password of the user</param>
         /// <returns>A user with a token</returns>
-        public User Login(String username, String password)
+        public user Login(String username, String password)
         {
             String target = Target.Authenticate;
 
@@ -44,11 +44,11 @@ namespace TheOxbridgeApp.Services
                     streamWriter.Write(jsonData);
                 }
             }
-            User foundUser = null;
+            user foundUser = null;
             try
             {
                 String responseFromServer = GetResponse(request);
-                foundUser = JsonConvert.DeserializeObject<User>(responseFromServer);
+                foundUser = JsonConvert.DeserializeObject<user>(responseFromServer);
             }
             catch (WebException)
             {
@@ -259,7 +259,7 @@ namespace TheOxbridgeApp.Services
             }
         }
         /// <summary>
-        /// Get message from the backend
+        /// Get messages from the backend
         /// </summary>
         /// <returns>A list of Messages</returns>
         public List<Broadcast> GetMessages()

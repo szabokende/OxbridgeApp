@@ -28,6 +28,11 @@
                             </ListView.ItemTemplate>
                         </ListView>
                     </StackLayout>
+                    <Label Text="Messages" VerticalOptions="Center" HorizontalOptions="Center" TextColor="Black" FontSize="22" FontAttributes="Bold" Margin="0,0,0,15">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding MessageClickedCMD}"> </TapGestureRecognizer>
+                        </Label.GestureRecognizers>
+                    </Label>
                     <Label Text="Log ud" VerticalOptions="End" HorizontalOptions="Center" IsVisible="{Binding IsLogOutVisible}" TextColor="Black" FontSize="22" FontAttributes="Bold" Margin="0,0,0,15">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding LogOutCMD}"> </TapGestureRecognizer>

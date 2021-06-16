@@ -41,6 +41,7 @@
                     <RowDefinition Height="0.3*"/>
                     <RowDefinition Height="0.3*"/>
                     <RowDefinition Height="0.9*"/>
+                    <RowDefinition Height="0.6*"/>
                 </Grid.RowDefinitions>
                 <Image Grid.Row="1" Source="tregattaIcon.png"></Image>
                 <Entry Grid.Row="3" Placeholder="Brugernavn" Text="{Binding Username}">
@@ -57,6 +58,7 @@
                 </Entry>
                 <Label Text="Forkert brugernavn eller adgangskode" Grid.Row="5"  FontSize="24" IsVisible="{Binding WrongLoginVisibility}" TextColor="Red"></Label>
                 <Button Grid.Row="5" Text="Log ind" Command="{Binding LoginCMD}"></Button>
+                <Button Grid.Row="6" Text="Forgot password" Command="{Binding FPCMD}"></Button>
             </Grid>
         </Frame>
     </ContentPage.Content>

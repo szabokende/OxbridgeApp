@@ -8,12 +8,11 @@ namespace TheOxbridgeApp.Views.Popups
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BroadcastPopupView : PopupPage
     {
-        public BroadcastPopupView()
+        public BroadcastPopupView(Broadcast selectedBroadcast)
         {
             InitializeComponent();
             this.BindingContext = new BroadcastPopupViewModel(selectedBroadcast);
         }
-
         
     }
 }

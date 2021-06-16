@@ -24,6 +24,7 @@ namespace TheOxbridgeApp.Models
 
         public bool HasSelectedDifferentEvent { get; set; }
 
+        public Broadcast SelectedBroadcast { get; set; }
 
         public TrackingPoupViewModel TrackingPoupViewModel;
         #endregion

@@ -11,8 +11,8 @@
              x:Class="TheOxbridgeApp.Views.Popups.BroadcastPopupView">
     <pages:PopupPage.Animation>
         <animations:ScaleAnimation 
-            DurationIn="400"
-            DurationOut="300"
+            DurationIn="800"
+            DurationOut="600"
             EasingIn="SinOut"
             EasingOut="SinIn"
             HasBackgroundAnimation="True"

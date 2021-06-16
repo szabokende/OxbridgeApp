@@ -21,14 +21,14 @@
 
     <ContentPage.Content>
         <StackLayout>
+            <Entry Text="{Binding MessageText, Mode=TwoWay}" Placeholder="Input message"></Entry>
+            <Button Text="Send" Command="{Binding SendMessageCMD}"></Button>
             <ListView SeparatorColor="Transparent" x:Name="navigationList" ItemsSource="{Binding Broadcasts}"  SelectedItem="{Binding SelectedBroadcast, Mode=TwoWay}" HasUnevenRows="True">
                 <ListView.Header>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"></ColumnDefinition>
-                            <ColumnDefinition Width="1*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <Label Text="Sender" HorizontalOptions="Fill"  Grid.Column="0" FontAttributes="Bold" Margin="1"/>
                         <Label Text="Message" HorizontalOptions="Fill"  Grid.Column="1" FontAttributes="Bold" Margin="1"/> 
                     </Grid>
                 </ListView.Header>
@@ -38,12 +38,10 @@
                             <Grid >
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="1*"></ColumnDefinition>
-                                    <ColumnDefinition Width="1*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="50"></RowDefinition>
                                 </Grid.RowDefinitions>
-                                <Label Text="{Binding Sender}" Grid.Column="0"></Label>
                                 <Label Text="{Binding Message}" Grid.Column="1"></Label>
                             </Grid>
                         </ViewCell>

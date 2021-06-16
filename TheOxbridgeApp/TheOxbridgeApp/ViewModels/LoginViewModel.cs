@@ -22,6 +22,7 @@ namespace TheOxbridgeApp.ViewModels
         public ICommand LoginCMD { get; set; }
         public ICommand EntryFocusedCommand { get; set; }
         public ICommand LoginClickedCMD { get; set; }
+        public ICommand FPCMD { get; set; }
         #endregion
 
         #region -- Binding values --
@@ -57,6 +58,7 @@ namespace TheOxbridgeApp.ViewModels
             LoginCMD = new Command(Login);
             EntryFocusedCommand = new Command(EntryFocused);
             LoginClickedCMD = new Command(Login);
+            FPCMD = new Command(ForgotPassword);
         }
 
         /// <summary>
@@ -83,6 +85,10 @@ namespace TheOxbridgeApp.ViewModels
         private void EntryFocused()
         {
             WrongLoginVisibility = false;
+        }
+        private void ForgotPassword()
+        {
+            
         }
     }
 }

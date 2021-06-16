@@ -68,6 +68,7 @@ namespace TheOxbridgeApp.ViewModels
         #region -- Commands --
         public ICommand LogOutCMD { get; set; }
         public ICommand HomeClickedCMD { get; set; }
+        public ICommand MessageClickedCMD { get; set; }
 
         /// <summary>
         /// Sets SelectedItem to null and navigates to the TargetViewModel of the selected MenuItem
@@ -91,6 +92,7 @@ namespace TheOxbridgeApp.ViewModels
 
             LogOutCMD = new Command(LogOut);
             HomeClickedCMD = new Command(HomeClicked);
+            MessageClickedCMD = new Command(MessageClicked);
             OnAppearing();
         }
 
@@ -103,10 +105,10 @@ namespace TheOxbridgeApp.ViewModels
             MenuItems.Clear();
             PopupNavigation.PushAsync(new LoadingPopupView());
 
-            User savedUser = await dataController.GetUser();
+            user savedUser = await dataController.GetUser();
             if (savedUser != null)
             {
-                User user = serverClient.Login(savedUser.EmailUsername, savedUser.Password);
+                user user = serverClient.Login(savedUser.EmailUsername, savedUser.Password);
                 if (user != null)
                 {
                     MenuItems.Add(new MasterMenuItems()
@@ -114,6 +116,13 @@ namespace TheOxbridgeApp.ViewModels
                         Text = "Tracking",
                         ImagePath = "trackingBoatIcon.png",
                         TargetViewModel = typeof(TrackingEventViewModel)
+                    });
+
+                    MenuItems.Add(new MasterMenuItems()
+                    {
+                        Text = "Messages",
+                        ImagePath = "",
+                        TargetViewModel = typeof(BroadcastViewModel)
                     });
 
                     IsLogOutVisible = true;
@@ -161,6 +170,14 @@ namespace TheOxbridgeApp.ViewModels
         {
             IsPresented = false;
             NavigationService.NavigateToAsync(typeof(EventViewModel));
+        }
+        /// <summary>
+        /// Navigates to broadcast view
+        /// </summary>
+        private void MessageClicked()
+        {
+            IsPresented = false;
+            NavigationService.NavigateToAsync(typeof(BroadcastViewModel));
         }
     }
 }
