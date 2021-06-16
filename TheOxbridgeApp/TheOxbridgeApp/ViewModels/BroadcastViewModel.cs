@@ -54,7 +54,7 @@ namespace TheOxbridgeApp.ViewModels
         public async void OnAppearing()
         {
             await PopupNavigation.PushAsync(new LoadingPopupView()).ConfigureAwait(false); 
-            unHandledBroadcast = serverClient.GetMessages(); // not sure if this collection needed
+            unHandledBroadcast = serverClient.GetMessages();
             Broadcasts = new ObservableCollection<Broadcast>(unHandledBroadcast);
             await PopupNavigation.PopAllAsync().ConfigureAwait(false);
         }
