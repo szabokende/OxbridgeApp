@@ -20,7 +20,6 @@ namespace TheOxbridgeApp.ViewModels.Popups
             serverClient = new ServerClient();
             this.SelectedBroadcast = selectedBroadcast;
 
-            //SetupBinding(); // not sure if needed
             PopupNavigation.PopAllAsync();
         }
         //bindable properties

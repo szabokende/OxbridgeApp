@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Rg.Plugins.Popup.Services;
 using TheOxbridgeApp.Data;
 using TheOxbridgeApp.Models;
 using TheOxbridgeApp.Services;
+using TheOxbridgeApp.Views.Popups;
 using Xunit;
 
 namespace XUnitAndroid
@@ -106,6 +109,47 @@ namespace XUnitAndroid
             {
                 return 0;
             }
+        }
+        [Fact]
+        public void TestPostMessage()
+        {
+            dataController.SaveUser(serverClient.Login(username, password));
+            Broadcast broadcast = new Broadcast
+            {
+                Message = "test"
+            };
+            bool isSucces = serverClient.PostData(broadcast, Target.Broadcasts).Result;
+
+            Assert.True(isSucces);
+        }
+        [Fact]
+        public void TestGetMessages()
+        {
+            List<Broadcast> broadcasts = serverClient.GetMessages();
+            Assert.NotNull(broadcasts);
+        }
+        [Fact]
+        public async Task TestNavigateToBroadcastAsync()
+        {
+            Broadcast broadcast = new Broadcast
+            {
+                Message = "test"
+            };
+            Broadcast tempSelectedBroadcast = broadcast;
+            await PopupNavigation.PushAsync(new LoadingPopupView());
+            await PopupNavigation.PushAsync(new BroadcastPopupView(tempSelectedBroadcast));
+            Assert.IsType<Broadcast>(tempSelectedBroadcast); 
+        }
+        [Fact]
+        public async Task TestMessageClicked()
+        {
+            Broadcast broadcast = new Broadcast
+            {
+                Message = "test"
+            };
+            await PopupNavigation.PushAsync(new LoadingPopupView());
+            await PopupNavigation.PushAsync(new BroadcastPopupView(broadcast));
+            Assert.IsType<Broadcast>(broadcast);
         }
     }
 }
